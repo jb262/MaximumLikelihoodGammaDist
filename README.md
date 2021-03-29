@@ -2,7 +2,7 @@
 A basic implementation for the maximum likelihood estimators of a gamma distribution's parameters.
 
 
-The implementation is based on Thomas P. Minka's algorithm for the maximum likelihood estimation of a gamma distribution's parameters and Jose Bernardo's algorithms to calculate the values of the digamma and the trigamma functions for positive input variables and John Burkardt's implementations respectively.
+The implementation is based on Thomas P. Minka's algorithm for the maximum likelihood estimation of a gamma distribution's parameters and Jose Bernardo's algorithm to calculate the values of the digamma function and BE Schneider's algorithm to calculate the trigamma functions for positive input variables and John Burkardt's implementations respectively.
 See the following references:
 
 [Minka - Estimating a Gamma Distribution](https://tminka.github.io/papers/minka-gamma.pdf)

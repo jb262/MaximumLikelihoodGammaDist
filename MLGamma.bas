@@ -10,7 +10,8 @@ Private Function Digamma(z As Double) As Double
     Dim result As Double
     Dim x As Double
     Dim r As Double
-    
+    Dim r2 As Double
+
     If (z <= 0#) Then
         Err.Raise Number:=2000, Description:="Numbers <= 0 not supported."
     End If
@@ -31,8 +32,9 @@ Private Function Digamma(z As Double) As Double
     r = 1# / x
     result = result + Log(x) - 0.5 * r
     r = r * r
-    
-    result = result - r * (1# / 12# - r * (1# / 120# - r * (1# / 252#)))
+
+    r2 = r * (1.0# / 240.0# - r * (1.0# / 132.0#))
+    result = result - r * (1.0# / 12.0# - r * (1.0# / 120.0# - r * (1.0# / 252.0# - r2)))
     Digamma = result
 
 End Function
@@ -40,14 +42,15 @@ End Function
 ''' <summary>Calculates the value of the trigamma fuction (second logarithmic derivative of the gamma function) for a given positive input value.</summary>
 ''' <param name="z">Input value >0 for the trigamma function.</param>
 ''' <returns>Value of the trigamma function.</returns>
-''' <remarks>Based on John Burkardt's implementation of Jose Bernardo's algorithm.</remarks>
+''' <remarks>Based on John Burkardt's implementation of BE Schneider's algorithm.</remarks>
 ''' <see cref="https://people.math.sc.edu/Burkardt/f_src/asa121/asa121.html" />
 Private Function Trigamma(z As Double) As Double
 
     Dim result As Double
     Dim x As Double
     Dim r As Double
-    
+    Dim r2 As Double
+
     If (z <= 0#) Then
         Err.Raise Number:=2000, Description:="Numbers <= 0 not supported."
     End If
@@ -66,9 +69,10 @@ Private Function Trigamma(z As Double) As Double
     Wend
     
     r = 1# / x / x
-    
-    result = result + 0.5 * r + (1# + r * (1# / 6# + r * (-1# / 30#))) / x
-    
+    r2 = r * (1.0# / 42.0# + r * (-1.0# / 33.0#))
+
+    result = result + 0.5 * r + (1.0# + r * (1.0# / 6.0# + r * (-1.0# / 30.0# + r2))) / x
+
     Trigamma = result
 
 End Function
